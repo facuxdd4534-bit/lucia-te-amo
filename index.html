@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Lucia 💘</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Times New Roman', Times, serif;
+background:linear-gradient(135deg,#ff9a9e,#a18cd1,#89f7fe);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* estrellas */
+
+.estrella{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+opacity:0.8;
+}
+
+/* pantalla contraseña */
+
+#login{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#a18cd1);
+z-index:1000;
+}
+
+.caja{
+background:rgba(255,255,255,0.2);
+padding:40px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+}
+
+input{
+padding:10px;
+border:none;
+border-radius:10px;
+text-align:center;
+}
+
+button{
+background:#ff4d6d;
+border:none;
+padding:10px 20px;
+border-radius:15px;
+color:white;
+cursor:pointer;
+margin:10px;
+}
+
+.seccion{
+background:rgba(255,255,255,0.2);
+margin:20px;
+padding:20px;
+border-radius:20px;
+}
+
+img{
+width:250px;
+border-radius:20px;
+margin:10px;
+}
+
+/* corazones */
+
+.corazon{
+position:fixed;
+font-size:20px;
+animation:flotar 5s linear forwards;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-600px);opacity:0;}
+}
+
+/* carta */
+
+.carta{
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+display:none;
+max-width:400px;
+margin:auto;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="login">
+<div class="caja">
+<h2>💘 Solo para Lucia 💘</h2>
+<p>Esta página tiene un secreto</p>
+
+<input type="password" id="clave" placeholder="Contraseña">
+
+<br>
+
+<button onclick="verificar()">Entrar 💖</button>
+
+<p id="error"></p>
+</div>
+</div>
+
+<div id="contenido" style="display:none;">
+
+<h1>💘 Querida Lucia 💘</h1>
+
+<audio autoplay loop controls>
+<source src="musica.mp3" type="audio/mp3">
+</audio>
+
+<div class="seccion">
+
+<h2>⏳ Nuestro tiempo juntos</h2>
+
+<p id="dias"></p>
+
+</div>
+
+<div class="seccion">
+
+<h2>💌 Una carta para vos</h2>
+
+<button onclick="abrirCarta()">Abrir carta 💖</button>
+
+<div class="carta" id="carta">
+
+<p>
+
+Lucia,
+
+no sé cómo explicarlo pero desde que apareciste en mi vida todo cambió.
+
+Tus mensajes, tu risa, tus abrazos, tu forma de ser... todo en vos me hace feliz.
+
+Gracias por cada momento, por cada risa y por cada beso.
+
+Sos una de las mejores cosas que me pasaron en la vida.
+
+Y quiero seguir viviendo muchísimos momentos más con vos.
+
+Te amo muchísimo 💘
+
+</p>
+
+</div>
+
+</div>
+
+<div class="seccion">
+
+<h2>📸 Nosotros</h2>
+
+<img src="imagen1.jpg">
+<img src="imagen2.jpg">
+<img src="imagen3.jpg">
+<img src="imagen4.jpg">
+
+</div>
+
+<div class="seccion">
+
+<h2>💞 Para vos</h2>
+
+<button onclick="lluvia()">Toca aquí 💖</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* contraseña */
+
+function verificar(){
+let clave=document.getElementById("clave").value;
+
+if(clave==="130326"){
+document.getElementById("login").style.display="none";
+document.getElementById("contenido").style.display="block";
+}else{
+document.getElementById("error").innerHTML="💔 Contraseña incorrecta";
+}
+}
+
+/* contador de dias */
+
+let inicio=new Date("2025-07-17");
+let hoy=new Date();
+
+let diferencia=hoy-inicio;
+
+let dias=Math.floor(diferencia/(1000*60*60*24));
+
+document.getElementById("dias").innerHTML=dias+" días juntos 💕";
+
+/* carta */
+
+function abrirCarta(){
+document.getElementById("carta").style.display="block";
+}
+
+/* lluvia corazones */
+
+function lluvia(){
+
+for(let i=0;i<120;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="💖";
+
+heart.style.position="fixed";
+
+/* aparecen en cualquier parte de la pantalla */
+heart.style.left=Math.random()*100+"%";
+heart.style.top=Math.random()*100+"%";
+
+/* tamaños diferentes */
+heart.style.fontSize=(15+Math.random()*40)+"px";
+
+/* animación */
+heart.style.transition="all 2s ease-out";
+
+document.body.appendChild(heart);
+
+/* movimiento tipo explosión */
+setTimeout(()=>{
+heart.style.transform=
+"translate("+(Math.random()*400-200)+"px,"+
+(Math.random()*400-200)+"px) scale(1.5)";
+heart.style.opacity="0";
+},50);
+
+/* se eliminan */
+setTimeout(()=>{
+heart.remove();
+},2000);
+
+}
+
+}
+
+for(let i=0;i<100;i++){
+
+let star=document.createElement("div");
+
+star.className="estrella";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+document.body.appendChild(star);
+
+}
+
+</script>
+
+</body>
+</html>
